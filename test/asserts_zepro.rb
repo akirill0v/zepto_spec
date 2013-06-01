@@ -14,5 +14,4 @@ class AssertsZepto < ZeptoSpec::TestCase
     assert false
   end
 
-  run
 end

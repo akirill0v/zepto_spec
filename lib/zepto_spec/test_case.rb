@@ -12,7 +12,9 @@ module ZeptoSpec
       end
 
       def run_all
-        reporter = ZeptoSpec::Reporter.new
+        formatter = ZeptoSpec::Formatter.new
+        reporter = ZeptoSpec::Reporter.new(formatter)
+
         @@test_cases.each do |test_case|
           test_case.run(reporter)
         end
@@ -28,16 +30,16 @@ module ZeptoSpec
       end
 
       def run_test_method(test_name)
-        result = {test_name: method_name}
+        metadata = {test_name: test_name}
         begin
           result = self.new.instance_eval(test_name)
-          result[:status] = result ? :passed : :error
+          metadata[:status] = result ? :passed : :error
         rescue Exception => e
-          result[:message] = e.message
-          result[:status] = :fail
-          result[:backtrace] = e.backtrace.inspect
+          metadata[:message] = e.message
+          metadata[:status] = :fail
+          metadata[:backtrace] = e.backtrace.inspect
         end
-        result
+        metadata
       end
     end
   end

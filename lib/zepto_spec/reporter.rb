@@ -1,6 +1,7 @@
 module ZeptoSpec
   class Reporter
     attr_reader :formatter, :statistic
+    
     def initialize(formatter)
       @formatter = formatter
       @statistic = {passed: [], error: [], fail: []}

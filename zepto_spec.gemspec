@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = ZeptoSpec::VERSION
   spec.authors       = ["Kirillov Alexander"]
   spec.email         = ["saratovsource@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Yet another test framework}
+  spec.summary       = %q{Yet another test framework}
   spec.homepage      = ""
   spec.license       = "MIT"
 

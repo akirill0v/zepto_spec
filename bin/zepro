@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'zepto_spec'
+ZeptoSpec::Runner.autorun
+exit(0)

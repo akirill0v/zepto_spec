@@ -11,14 +11,8 @@ module ZeptoSpec
         @@test_cases << child
       end
 
-      def run_all
-        formatter = ZeptoSpec::Formatter.new
-        reporter = ZeptoSpec::Reporter.new(formatter)
-
-        @@test_cases.each do |test_case|
-          test_case.run(reporter)
-        end
-        reporter.summary
+      def test_cases
+        @@test_cases
       end
 
       def run(reporter)

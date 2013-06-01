@@ -7,12 +7,12 @@ module ZeptoSpec
 
     class << self
       def inherited(child)
-        @@test_cases ||= []
-        @@test_cases << child
+        @test_cases ||= []
+        @test_cases << child
       end
 
       def test_cases
-        @@test_cases
+        @test_cases || []
       end
 
       def run(reporter)

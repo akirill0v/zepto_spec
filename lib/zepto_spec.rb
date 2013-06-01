@@ -1,5 +1,5 @@
 require "zepto_spec/version"
 
 module ZeptoSpec
-  # Your code goes here...
+  autoload :TestCase, 'zepto_spec/test_case'
 end

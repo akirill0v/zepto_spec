@@ -1,13 +1,18 @@
 require 'zepto_helper'
 
-class AssertsZepto < ZeptoTest::TestCase
+class AssertsZepto < ZeptoSpec::TestCase
 
-  zep "true asserts" do
+  def test_assert_true
     assert true
   end
 
-  zep "false asserts" do
+  def test_exception
+    2/0
+  end
+
+  def test_assert_false
     assert false
   end
 
+  run
 end

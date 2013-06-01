@@ -6,6 +6,10 @@ module ZeptoSpec
     end
 
     class << self
+      def inherited(child)
+        puts self
+      end
+
       def run
         test_methods = instance_methods(false)
         test_methods.each do |m|

@@ -7,7 +7,14 @@ module ZeptoSpec
 
     class << self
       def inherited(child)
-        puts self
+        @@test_cases ||= []
+        @@test_cases << child
+      end
+
+      def run_all
+        @@test_cases.each do |test_case|
+          test_case.run
+        end
       end
 
       def run

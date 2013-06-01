@@ -1,6 +1,6 @@
 require 'zepto_helper'
 
-class AssertsZepto < ZeptoHelper::TestCase
+class AssertsZepto < ZeptoTest::TestCase
 
   zep "true asserts" do
     assert true

@@ -10,6 +10,13 @@ module ZeptoSpec
         end
         reporter.summary
       end
+
+      def cli
+        $LOAD_PATH.unshift(File.join(Dir.getwd, 'test'))
+        args = ARGV[0]
+        path = File.expand_path(args)
+        require path
+      end
     end
   end
 end

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'zepto_spec'
-ZeptoSpec::Runner.autorun
-exit(0)
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "../lib"))
+require 'zepto_spec/runner'
+ZeptoSpec::Runner.cli

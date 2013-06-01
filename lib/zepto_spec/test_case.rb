@@ -12,29 +12,32 @@ module ZeptoSpec
       end
 
       def run_all
+        reporter = ZeptoSpec::Reporter.new
         @@test_cases.each do |test_case|
-          test_case.run
+          test_case.run(reporter)
         end
+        reporter.summary
       end
 
-      def run
+      def run(reporter)
         test_methods = instance_methods(false)
         test_methods.each do |m|
-          run_test_method(m.to_s)
+          res = run_test_method(m.to_s)
+          reporter.collect(res)
         end
       end
 
-      def run_test_method(method_name)
+      def run_test_method(test_name)
+        result = {test_name: method_name}
         begin
-          result = self.new.instance_eval(method_name)
-          puts "#{method_name} - #{result ? 'PASSED' : 'ERROR'}"
+          result = self.new.instance_eval(test_name)
+          result[:status] = result ? :passed : :error
         rescue Exception => e
-          puts e.message
-          puts e.backtrace.inspect
-          puts "#{method_name} - FAIL"
-        ensure
-          # always executed
+          result[:message] = e.message
+          result[:status] = :fail
+          result[:backtrace] = e.backtrace.inspect
         end
+        result
       end
     end
   end

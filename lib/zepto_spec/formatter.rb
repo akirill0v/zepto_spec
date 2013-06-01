@@ -2,7 +2,7 @@ module ZeptoSpec
   class Formatter
 
     def output(source)
-      p source
+      puts source
     end
 
     def summary(statistic)
@@ -10,7 +10,8 @@ module ZeptoSpec
       failed_count = statistic[:fail].size
       error_count = statistic[:error].size
       all_tests_count = passed_count + failed_count + error_count
-      
+
+      output "---SUMMARY:---"
       output "PASSED: #{passed_count}, ERRORS: #{error_count}, FAILED: #{failed_count} from #{all_tests_count} tests"
     end 
 
